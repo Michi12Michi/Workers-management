@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container plan-daily d-flex flex-wrap justify-content-center">
+  <form method="POST">
+    {{  form.hidden_tag()  }}
+    {% for sche in form.work_sche %}
+      <div class="container d-flex align-items-center justify-content-center">
+        <div class="container form-floating mb-3">
+          {{ sche.form.worker(class="form-control", style="padding-top:0; padding-bottom:0; text-align:center;") }}
+        </div>
+        <div class="form-floating mb-3">
+          {{ sche.form.schedule(class="form-control", style="padding-top:0; padding-bottom:0; text-align:center;") }}
+        </div>
+      </div>
+    {% endfor %}
+    <div class="container d-flex align-items-center justify-content-center">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+</div>
+
+{% endblock %}

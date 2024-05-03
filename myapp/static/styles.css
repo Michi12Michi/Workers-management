@@ -1,0 +1,196 @@
+body {
+  font-family: 'Urbanist', sans-serif;
+}
+
+/* header > div {
+  margin-top: 16px;
+} */
+
+.collapse {
+  flex: 0;
+}
+
+.navbar-expand-lg {
+  margin-bottom: 20px !important;
+  background-color: rgb(244, 244, 244) !important;
+  border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+}
+
+.nav-item {
+  padding-right: 20px;
+}
+
+.nav-item:last-child {
+  padding-right: 0px;
+}
+
+.nav-link {
+  color: #0d6efd !important;
+  text-decoration: none !important;
+}
+
+.alert {
+  text-align: justify;
+}
+
+#index-page {
+  margin-bottom: 20px;
+}
+
+.index-table {
+  overflow: auto;
+  padding-right: 5px;
+}
+
+.form-table {
+  overflow: auto;
+  padding-left: 5px;
+}
+
+.index-table .value-item, .index-table .schedule-item, .form-table .schedule-item, .form-table .value-item {
+  text-align: center;
+}
+
+.btn.commit {
+  align-self: center;
+  width: 100px;
+}
+
+section.info {
+  height: calc(100vh - 150px);
+  overflow: auto;
+  flex-direction: column;
+}
+
+.info p {
+  text-align: justify;
+}
+
+div.table {
+  height: calc(100vh - 270px);
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.ML {
+  font-weight: bolder;
+}
+
+.card-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.list-group-item > span {
+  font-weight: bold;
+}
+
+section.workers-page {
+  height: calc(100vh - 100px);
+  overflow-x: auto;
+  justify-content: space-around;
+} 
+
+section.schedules-page {
+  overflow: auto;
+  justify-content: space-around;
+}
+
+section.workers-page > .card, section.schedules-page > .card {
+  width: 250px;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.list-group-item address {
+  margin-bottom: 0px;
+}
+
+.workers-page .card-img-top {
+  align-self: center;
+  height: 150px;
+  width: 150px;
+  padding-top: 20px;
+}
+
+.workers-page .card-body-title, .schedules-page .card-body-title {
+  flex: 0;
+  padding-bottom: 0px;
+}
+
+.workers-page .card-body-btn > .btn, .schedules-page .card-body-btn > .btn {
+  margin: 20px 5px;
+  height: 40px;
+} 
+
+.date-item {
+  width: 200px;
+  text-align:center;
+  margin:0;
+}
+
+.date-item span {
+  font-size: 15px;
+  text-align: center;
+}
+
+.red-item {
+  text-decoration:none;
+  color:red;
+}
+
+.normal-item {
+  text-decoration:none;
+  color:black;
+}
+
+.register {
+  flex-direction: column;
+}
+
+.register > h2 {
+  margin: 10px 0px 20px 0px;
+}
+
+.schedule-create {
+  flex-direction: column;
+}
+
+.schedule-create > h2, .month-year-date > h2, .payment-preform > h2, .payments > h2, .info > h2 {
+  margin: 10px 0px 20px 0px;
+}
+
+.cont-payments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+}
+
+#payment-form input {
+  width: 150px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.input-payment {
+  padding: 0;
+  margin: 0;
+  width: 70px;
+  height: 20px;
+}
+
+.payment-detail {
+  flex: auto;
+  margin-bottom: 10px;
+}
+
+.plan-daily {
+  height: calc(100vh - 100px);
+  overflow: auto;
+}
+
+.plan-daily select {
+  width: fit-content;
+}

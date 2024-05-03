@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container d-flex flex-column align-items-center">
+  <div class="month-year-date">
+    <h2>{{month}}, {{year}}</h2>
+  </div>
+</section>
+
+<section class="container d-flex flex-column align-items-center">
+  <div class="table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          {% for date in dates %}
+              {% if date.is_red %}
+                <th class="date-item" scope="col" style="width:5px; height:3px;"><a href="{{url_for('dates.manage_day', id = date.id)}}" class="red-item"><span>{{ date.fulldate.day }}{{ date.day_of_week[0] }}</span></a></th>
+              {% else %}
+                <th class="date-item" scope="col" style="width:5px; height:3px;"><a href="{{url_for('dates.manage_day', id = date.id)}}" class="normal-item"><span>{{ date.fulldate.day }}{{  date.day_of_week[0]  }}</span></a></th>
+              {% endif %}
+          {% endfor %}
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for worker in workers %}
+          <tr>
+            <th scope="row"><a href="{{url_for('users.manage_payment', id = worker.id, month=dates[0].month_number, year = dates[0].year)}}">{{ worker.name }}</a></th>
+            {% for sch in scheds[worker.name] %}
+              <td>{{sch}}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<nav aria-label="Plan pages">
+  <ul class="pagination justify-content-center">
+  {% for i in range(1,13) %}
+    {% if i == month %}
+      <li class="page-item disabled">
+        <a class="page-link" href="{{ url_for('dates.plan', year = year, page = i) }}">{{ i }}</a>
+      </li>
+    {% else %}
+      <li class="page-item">
+        <a class="page-link" href="{{ url_for('dates.plan', year = year, page = i) }}">{{ i }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</nav>
+
+{% endblock %}

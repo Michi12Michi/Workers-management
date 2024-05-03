@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center">
+  <form method="POST" action="" enctype="multipart/form-data">
+    {{  form.hidden_tag()  }}
+    <div class="form-floating mb-3">
+      {{ form.name(class="form-control") }}
+      <label>{{ form.name.label }}</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.surname(class="form-control") }}
+      <label>{{ form.surname.label }}</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.role(class="form-control") }}
+      <label>{{ form.role.label }}</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.phone(class="form-control") }}
+      <label>{{ form.phone.label }}</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.email(class="form-control") }}
+      <label>{{ form.email.label }}</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.picture(class="form-control") }}
+      <label>{{ form.picture.label }}</label>
+    </div>
+    <div class="container d-flex align-items-center justify-content-center">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+</div>
+
+{% endblock %}

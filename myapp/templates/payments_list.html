@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if list %}
+  <section class="container payments d-flex flex-column align-items-center">
+    <h2>Payment list</h2>
+    {% for payment in list %}
+        
+            {% with payment=payment %}
+              {% include "payment_detail.html" %}
+            {% endwith %}
+        
+    {% endfor %}
+  </section>
+{% else %}
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="container alert alert-danger" role="alert">
+      No previous payments available!
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

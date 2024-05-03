@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="container d-flex schedule-create align-items-center justify-content-center">
+  <h2>
+    Please, insert data:
+  </h2>
+  <form method="POST">
+    {{  form.hidden_tag()  }}
+    <div class="form-floating mb-3">
+      {{ form.name(class="form-control") }}
+      <label>{{ form.name.label }}</label>
+    </div>
+    <div class="form-floating mb-3">
+      {{ form.hours(class="form-control") }}
+      <label>{{ form.hours.label }}</label>
+    </div>
+    <div class="container d-flex align-items-center justify-content-center">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+</section>
+{% endblock %}

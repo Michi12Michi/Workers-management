@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{% block content %}
+<section class="container info d-flex align-items-center">
+    <h2>
+        About the project
+    </h2>
+    <article>
+        <p>The WorkManager project began in January 2024 following the fortuitous and fortunate encounter between ML, an Italian chemist originally from Rionero in Vulture (Basilicata, province of Potenza), and GI, a professional trainer with years of experience in IT.</p>
+        <p>Following a paradigm of conceptual simplicity, the project was realized over a few months during breaks from work and in M's free time, thanks to his enthusiasm for web development.</p>
+        <p>The project was entirely implemented in Python 3.12 using the Flask framework and the Flask SQLAlchemy extension for data management. The code is available on GitHub at the link below.</p>
+        <br>
+        <p>The program allows for managing employees within a defined rotation cycle (both in terms of hours and remuneration) and keeping track of payments made.</p>
+    </article>
+
+</section>
+{% endblock content %}
+
+<div class="container">
+    {% include "footer.html" %}
+</div>
+

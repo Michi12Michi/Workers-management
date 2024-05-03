@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if list %}
+
+  <section class="schedules-page container d-flex flex-wrap align-items-flex-start">
+    {% for schedule in list %}
+    <div class="card col-3">
+      <svg align="center" xmlns="http://www.w3.org/2000/svg" height=80 weight=80 fill="currentColor" class="card-img-top bi bi-clock" viewBox="0 0 16 16">
+        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+      </svg>      
+      <div class="card-body-title">
+        <h4 class="card-title">{{ schedule.name }}</h4>
+      </div>
+      <menu class="list-group list-group-flush">
+        <li class="list-group-item"><span>Hours</span>: {{  schedule.hours  }}</li>
+      </menu>
+      <div class="card-body-btn d-flex justify-content-center">
+        <a href={{ url_for("dates.schedule_update", id = schedule.id) }} class="btn btn-info">Update</a>
+        <a href={{ url_for("dates.delete_schedule", id = schedule.id) }} class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  {% endfor %}
+  </section>
+
+  {% else %}
+
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="container alert alert-warning" role="alert">
+      There are no schedules in the list.
+    </div>
+  </div>
+{% endif %}
+
+
+
+
+{% endblock %}

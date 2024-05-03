@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container justify-content-center align-items-center">
+
+  {% with yellows = get_flashed_messages(category_filter=["yellow"]) %}
+    {% if yellows %}
+      {% for msg in yellows %}
+        <section class="container alert alert-warning" role="alert">
+          {{ msg }}
+        </section>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% with greens = get_flashed_messages(category_filter=["green"]) %}
+    {% if greens %}
+      {% for msg in greens %}
+        <section class="alert alert-success" role="alert">
+          {{ msg }}
+        </section>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <section class="alert alert-info" role="alert">
+    You have {{ num_worker }} workers to manage.
+    {% if num_worker %}
+      You can update or remove workers anytime (Psst: <a href={{ url_for("users.list") }}>here</a>'s a shortcut for you!).
+    {% endif %}
+  </section>
+
+  {% if schedule_count and schedules %}
+  <section id="index-page" class="container d-flex flex-wrap justify-content-space-around align-items-flex-start">
+
+    <article class="index-table col-xl-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            {% for schedule in schedules %}
+                  <th class="schedule-item" scope="col"><span>{{ schedule.name }}</span></th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for dict in schedule_count %}
+            {% for item in dict %}
+              <tr>
+                <th scope="row">{{ item }}</th>
+                {% for values in dict.values() %}
+                  {% for i in values %}
+                    <td class="value-item">{{i}}</td>
+                  {% endfor %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </article>
+    {% if form %}
+    <article class="form-table col-xl-6">
+      <form class="container cont-payments" method="POST">
+        {{ form.hidden_tag() }}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              {% for schedule in schedules %}
+                    <th class="schedule-item" scope="col"><span>{{ schedule.name }}</span></th>
+              {% endfor %}
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for i in range(num_worker) %}
+              <tr>
+                <th scope="row"></th>
+                {% for j in range(any_schedule) %}
+                  <td class="value-item">{{ form.field[i].payment[j].payment(class="input-payment") }}</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {{ form.submit(class="btn btn-primary commit") }}
+      </form>
+    </article>
+    {% endif %}
+  </section>
+{% endif %}
+{% endblock %}

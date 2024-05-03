@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if list %}
+
+  <section class="workers-page container d-flex flex-wrap align-items-flex-start">
+    {% for worker in list %}
+    <div class="card col-3">
+      <img align="center" src="{{ url_for('static', filename = 'profile_pics/' + worker.profile_image) }}" class="card-img-top"/>
+      <div class="card-body-title">
+        <h4 class="card-title">{{ worker.name }} <br> {{ worker.surname }}</h4>
+      </div>
+      <menu class="list-group list-group-flush">
+        {% if worker.role %}
+          <li class="list-group-item"><span>Role</span>: {{ worker.role }}</li>
+        {% else %}
+          <li class="list-group-item"><span>Role</span>: not available</li>
+          {% endif %}
+        {% if worker.credit == 0.0 %}
+          <li class="list-group-item"><span>Credit</span>:<span style="color:red"> {{ worker.credit }} $</span></li>
+        {% else %}
+          <li class="list-group-item"><span>Credit</span>:<span style="color:green"> {{ worker.credit }} $</span></li>
+        
+        {% endif %}
+        {% if worker.phone %}
+          <li class="list-group-item"><span>Phone</span>: {{ worker.phone }}</li>
+        {% else %}
+          <li class="list-group-item"><span>Phone</span>: not available</li>
+        {% endif %}
+        {% if worker.email %}
+          <li class="list-group-item"><address><a href="mailto:{{ worker.email }}">{{ worker.email }}</a></address></li>
+        {% else %}
+          <li class="list-group-item"><span>Email</span>: not available</li>
+        {% endif %}
+      </menu>
+      <div class="card-body-btn d-flex justify-content-center">
+        <a href={{ url_for("users.account", id = worker.id) }} class="btn btn-info">Update</a>
+        <a href={{ url_for("users.delete", id = worker.id) }} class="btn btn-danger">Delete</a>
+      </div>
+
+    </div>
+
+    {% endfor %}
+
+  </section>
+
+  {% else %}
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="container alert alert-warning" role="alert">
+      There are no workers in the list.
+    </div>
+  </div>
+{% endif %}
+
+
+
+
+{% endblock %}
